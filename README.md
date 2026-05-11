@@ -2,7 +2,7 @@
 
 1. How much data your publisher program will send to the message broker in one run?
 
-In a single execution, the publisher program transmits a total of five distinct events to the message broker. Each event is a UserCreatedEventMessage containing a specific user ID and a username tagged with my NPM. This is achieved this by explicitly calling the publish_event method five times for each of the users in the list. Once these messages reach RabbitMQ, they are stored in the "user_created" queue until a subscriber is ready to pull them. This structured burst of data is what generates the characteristic activity spikes on the RabbitMQ management dashboard.
+The publisher program transmits five distinct events to the message broker during a single execution. Each event is formatted as a 'UserCreatedEventMessage' that contains a unique user ID and a username tagged with my NPM. This data volume is achieved by explicitly calling the publish_event method five times within the code. Once sent, these messages are stored within the "user_created" queue on the RabbitMQ server. The messages remain in the queue until an active subscriber is ready to consume and process them. This rapid delivery of five data packets creates the characteristic activity spikes visible on the RabbitMQ management dashboard.
 
 2. The url of: “amqp://guest:guest@localhost:5672” is the same as in the subscriber program, what does it mean?
 
