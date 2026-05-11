@@ -1,0 +1,7 @@
+1. How much data your publisher program will send to the message broker in one run?
+
+In a single execution, the publisher program sends a total of five events to the message broker. These events are structured as UserCreatedEventMessage objects, specifically containing the user IDs "1" through "5" along with their corresponding names (Amir, Budi, Cica, Dira, and Emir). Each call to the publish_event method transmits one individual data packet, and because the code executes five such calls in succession, the RabbitMQ broker receives five distinct messages in the "user_created" queue to be held for processing.
+
+2. The url of: “amqp://guest:guest@localhost:5672” is the same as in the subscriber program, what does it mean?
+
+The connection URL is identical in both programs because it serves as the shared address for the central RabbitMQ message broker that facilitates communication between the independent programs. This URL, amqp://guest:guest@localhost:5672, defines the specific protocol (AMQP), the default administrative credentials (guest/guest), and the network location (localhost) where the broker is listening for incoming traffic on port 5672. By pointing both the publisher and the subscriber to the exact same endpoint, you ensure they are operating within the same system; the publisher knows exactly where to deposit the events, and the subscriber knows exactly which broker to query to pick up that specific data for processing.
