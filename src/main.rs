@@ -15,6 +15,10 @@ impl MessageHandler<UserCreatedEventMessage> for UserCreatedEventHandler {
         println!("Message received on handler 1: {:?}", message);
         Ok(())
     }
+
+    fn get_handler_action(&self) -> String {
+        "user_created_handler".to_string()
+    }
 }
 
 fn main() {
