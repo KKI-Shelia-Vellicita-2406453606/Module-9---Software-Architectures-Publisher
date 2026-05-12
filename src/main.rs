@@ -23,7 +23,7 @@ impl MessageHandler<UserCreatedEventMessage> for UserCreatedEventHandler {
 
 fn main() {
     let mut p = CrosstownBus::new_queue_publisher(
-        "amqp://guest:guest@localhost:5672".to_owned()
+        "amqp://guest:guest@54.236.28.248:5672".to_owned()
     ).unwrap();
 
     _ = p.publish_event("user_created".to_owned(), UserCreatedEventMessage {user_id: "1".to_owned(), user_name: "2406453606-Amir".to_owned() });
